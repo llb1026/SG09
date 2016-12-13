@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<!-- Wrapper -->
+	<div id="wrapper">
+
+	<!-- Main -->
+		<div id="main">
+			<div class="inner">
+        <section class="tiles">
+        	
+        	<!-- _post.html.erb에 명시된 틀을 사용한 각각 포스트 내용이예요 -->
+          <%= render @posts, type: :detail %>
+        	      
+        </section>
+        <br>
+        <%= link_to 'New Post', new_post_path %>
+      </div>
+    </div>
+  </div>

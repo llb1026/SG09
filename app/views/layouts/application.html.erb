@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<!-- 기본 임포트 세팅입니당 -->
+    <title>SG09</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/home.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.0/skel.min.js"></script>
+  	<script src="assets/util.js"></script>
+  	<script src="assets/main.js"></script>
+  </head>
+  <body>
+  	<!-- 뷰 수정할때 id='wrapper', class='inner'를 써줘야 페이지 가장자리에 패딩이 생겨요 -->
+  	
+	  <!-- Wrapper -->
+		<div id="wrapper">
+	
+	    <!-- Header -->
+			<header id="header">
+				<div class="inner">
+				    
+				<!-- Nav -->
+						<nav>
+							<ul>
+								<li><a href="#menu">Menu</a></li>
+							</ul>
+						</nav>
+						
+				<!-- Intro -->
+						<section id="intro">
+							<a class="logo"><img src="/assets/logo.svg"></a>
+							<header>
+								<h1>SG09 for Sogang Univ. Family</h1>
+								
+								<% if user_signed_in? %>
+										<h2>&laquo; Hello, <%= current_user.email %>! &raquo;</h2>
+									<a href="/users/sign_out">LogOut</a>
+								<% else %>
+									<a href="/"></a>
+								<% end %>
+
+							</header>
+						</section>
+						
+				</div>
+			</header>
+	
+		<!-- Menu -->
+			<nav id="menu">
+				<h2>Menu</h2>
+				<ul>
+					<li><a href="/">Main</a></li>
+					<li><a href="/mypage">My Page</a></li>
+				</ul>
+			</nav>
+			
+		<!-- 이게 모듈화된 각 페이지들의 내용이 들어가는 부분! -->
+	  <%= yield %>
+	
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="copyright">
+						<li>&copy; <a href="http://sogang.ac.kr/">Sogang Univ.</a> X <a href="http://likelion.org/">LikeLion 4th.</a>&nbsp;&nbsp;All rights reserved</li><li>Design: HTML5 UP</li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+  </body>
+</html>

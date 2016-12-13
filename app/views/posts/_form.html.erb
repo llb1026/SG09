@@ -1,0 +1,39 @@
+<%= form_for(@post) do |f| %>
+  
+  <!-- 에러가 났을 때 에러 표시해주는 부분입니다 -->
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <!-- 새 포스트 작성하는 폼 -->
+  <div class="field">
+    <%= f.label :category %>
+    <%= f.select 'category', options_for_select({'물품단체제작' => "물품단체제작", '티켓단체구매' => "티켓단체구매", '물품단체구매' => "물품단체구매", '기타공구' => "기타공구"}) %>
+  </div>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+  <!--<div class="field">-->
+  <!--  <%= f.label :img_url %><br>-->
+  <!--  <%= f.text_field :img_url %>-->
+  <!--</div>-->
+
+  <div class="actions">
+	  <input type="submit" value="Post" class="special" />
+		<a href="/"><input type="button" value="back"></a>
+  </div>
+<% end %>
